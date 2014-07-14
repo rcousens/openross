@@ -1,19 +1,19 @@
 <?php
 
-namespace OpenRoss\Bundle\UserBundle\Controller;
+namespace OpenRoss\Bundle\PublicBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class DefaultController extends Controller
+class PublicController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        return array();
     }
 }

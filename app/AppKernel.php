@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new OpenRoss\Bundle\UserBundle\OpenRossUserBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
             new OpenRoss\Bundle\DashboardBundle\OpenRossDashboardBundle(),
+            new OpenRoss\Bundle\PublicBundle\OpenRossPublicBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
