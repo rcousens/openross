@@ -24,11 +24,10 @@ fos_user_change_password:
 
 open_ross_public:
     resource: "@OpenRossPublicBundle/Controller/"
-    type:     annotation
-    prefix:   /
+    type: annotation
+    prefix: /
 
 open_ross_dashboard:
     resource: "@OpenRossDashboardBundle/Controller/"
-    type:     annotation
-    prefix:   /dashboard
+    type: annotation
 
