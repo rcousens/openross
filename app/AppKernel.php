@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new OpenRoss\Bundle\UserBundle\OpenRossUserBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new OpenRoss\Bundle\DashboardBundle\OpenRossDashboardBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
