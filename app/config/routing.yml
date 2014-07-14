@@ -17,10 +17,10 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
-open_ross_user:
-    resource: "@OpenRossUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
+#open_ross_user:
+#    resource: "@OpenRossUserBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
 
 open_ross_public:
     resource: "@OpenRossPublicBundle/Controller/"
