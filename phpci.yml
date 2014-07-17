@@ -5,6 +5,7 @@ build_settings:
         - "tests"
         - "app"
         - "web"
+        - "bin"
 
 setup:
 #    postgresql:
@@ -26,6 +27,7 @@ test:
 #        args: "--stderr"
     php_mess_detector:
         allow_failures: true
+        zero_config: true
     php_code_sniffer:
         standard: "PSR2"
     php_cpd:
