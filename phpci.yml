@@ -29,9 +29,16 @@ test:
         allow_failures: true
         zero_config: true
     php_code_sniffer:
-        standard: "PSR2"
+        allow_failures: true
+        zero_config: true
     php_cpd:
         allow_failures: true
+        zero_config: true
+    php_loc:
+        directory: "src"
+    php_docblock_checker:
+        allow_failures: true
+        zero_config: true
 #    grunt:
 #        task: "build"
 
