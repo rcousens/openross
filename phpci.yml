@@ -3,6 +3,8 @@ build_settings:
     ignore:
         - "vendor"
         - "tests"
+        - "app"
+        - "web"
 
 setup:
 #    postgresql:
