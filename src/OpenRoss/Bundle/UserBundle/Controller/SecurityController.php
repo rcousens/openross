@@ -16,4 +16,4 @@ class SecurityController extends BaseSecurityController
             return parent::loginAction($request);
         }
     }
-} 
+}
