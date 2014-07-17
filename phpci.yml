@@ -1,4 +1,5 @@
 build_settings:
+    verbose: true
     clone_depth: 1 # depth of 1 is a shallow clone, remove this line to clone entire repo
     ignore:
         - "vendor"
@@ -26,7 +27,6 @@ test:
 #        run_from: "phpunit/"
 #        coverage: "tests/logs/coverage"
 #        args: "--stderr"
-    lint: ~
     php_mess_detector:
         allow_failures: true
         zero_config: true
@@ -36,10 +36,11 @@ test:
     php_cpd:
         allow_failures: true
         zero_config: true
-    php_loc: ~
     php_docblock_checker:
         allow_failures: true
         zero_config: true
+    php_loc: ~
+    lint: ~
 #    grunt:
 #        task: "build"
 
