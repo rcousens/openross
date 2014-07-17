@@ -14,6 +14,7 @@ setup:
 #        - "GRANT ALL PRIVILEGES ON test.* TO test@'localhost' IDENTIFIED BY 'test';"
     composer:
         action: "install"
+        prefer_dist: true
 
 test:
 #    php_unit:
