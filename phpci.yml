@@ -26,6 +26,7 @@ test:
 #        run_from: "phpunit/"
 #        coverage: "tests/logs/coverage"
 #        args: "--stderr"
+    lint: ~
     php_mess_detector:
         allow_failures: true
         zero_config: true
