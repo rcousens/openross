@@ -1,0 +1,49 @@
+build_settings:
+    verbose: true
+    clone_depth: 1 # depth of 1 is a shallow clone, remove this line to clone entire repo
+    ignore:
+        - "vendor"
+        - "tests"
+        - "app"
+        - "web"
+        - "bin"
+
+setup:
+#    postgresql:
+#        - "DROP DATABASE IF EXISTS test;"
+#        - "CREATE DATABASE test;"
+#        - "GRANT ALL PRIVILEGES ON test.* TO test@'localhost' IDENTIFIED BY 'test';"
+    composer:
+        action: "install"
+        prefer_dist: true
+
+test:
+#    php_unit:
+#        config:
+#            - "PHPUnit-all.xml"
+#            - "PHPUnit-ubuntu-fix.xml"
+#        directory:
+#            - "tests/"
+#        run_from: "phpunit/"
+#        coverage: "tests/logs/coverage"
+#        args: "--stderr"
+    php_mess_detector:
+        allow_failures: true
+        zero_config: true
+    php_code_sniffer:
+        allow_failures: true
+        zero_config: true
+    php_cpd:
+        allow_failures: true
+        zero_config: true
+    php_docblock_checker:
+        allow_failures: true
+        zero_config: true
+    php_loc: ~
+    lint: ~
+#    grunt:
+#        task: "build"
+
+complete:
+#    mysql:
+#        - "DROP DATABASE IF EXISTS test;"

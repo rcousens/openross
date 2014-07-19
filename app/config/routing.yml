@@ -1,3 +1,17 @@
+
+open_ross_demo_charts:
+    resource: "@OpenRossDemoChartsBundle/Controller/"
+    type: annotation
+
+open_ross_dashboard:
+    resource: "@OpenRossDashboardBundle/Controller/"
+    type: annotation
+
+open_ross_public:
+    resource: "@OpenRossPublicBundle/Controller/"
+    type: annotation
+    prefix: /
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -21,13 +35,4 @@ fos_user_change_password:
 #    resource: "@OpenRossUserBundle/Controller/"
 #    type:     annotation
 #    prefix:   /
-
-open_ross_public:
-    resource: "@OpenRossPublicBundle/Controller/"
-    type: annotation
-    prefix: /
-
-open_ross_dashboard:
-    resource: "@OpenRossDashboardBundle/Controller/"
-    type: annotation
 

@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+{% javascripts 'bundles/rcamcharts/js/amcharts/amcharts.js'
+    'bundles/rcamcharts/js/amcharts/serial.js'
+    'bundles/rcamcharts/js/amcharts/gauge.js'
+    'bundles/rcamcharts/js/amcharts/pie.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock javascripts %}
+
+{% block body %}
+    <div id="chart" style="width: 800px; height: 400px; margin: 0 auto;"></div>
+    <script>
+        {{ amchart(chart) }}
+    </script>
+{% endblock %}
