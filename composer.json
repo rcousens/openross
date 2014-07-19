@@ -1,11 +1,17 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "rcousens/openross",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "OpenRoss Website (http://www.openross.com)",
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
+    "repositories": [
+        {
+        "type": "vcs",
+        "url": "https://github.com/rcousens/AmChartsBundle"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.5.*",
@@ -20,7 +26,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "snc/redis-bundle": "1.1.x-dev",
-        "rcousens/amcharts-bundle": "dev-master"
+        "rcousens/amcharts-bundle": "dev-master@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "94c3e1336210c3d00646623c0d3a0e55",
+    "hash": "5ecf2aa99dc448b1fa3d72e7dff0d651",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -978,6 +978,60 @@
             "time": "2012-12-21 11:40:51"
         },
         {
+            "name": "rcousens/amcharts-bundle",
+            "version": "dev-master",
+            "target-dir": "RC/AmChartsBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rcousens/AmChartsBundle.git",
+                "reference": "a7ada687be36a8557fecebb9fbad20f206c1aefa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rcousens/AmChartsBundle/zipball/a7ada687be36a8557fecebb9fbad20f206c1aefa",
+                "reference": "a7ada687be36a8557fecebb9fbad20f206c1aefa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/symfony": "2.*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "RC\\AmChartsBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ross Cousens"
+                }
+            ],
+            "description": "Symfony2 Bundle that ease the use of AmCharts to display rich graph and charts in your app",
+            "homepage": "https://github.com/rcousens/AmChartsBundle",
+            "keywords": [
+                "amcharts",
+                "chart",
+                "charting",
+                "charts",
+                "graph",
+                "graphs",
+                "symfony2"
+            ],
+            "support": {
+                "source": "https://github.com/rcousens/AmChartsBundle/tree/master"
+            },
+            "time": "2014-07-19 07:30:23"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v3.0.1",
             "target-dir": "Sensio/Bundle/DistributionBundle",
@@ -1720,7 +1774,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "snc/redis-bundle": 20
+        "snc/redis-bundle": 20,
+        "rcousens/amcharts-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

@@ -16,11 +16,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new OpenRoss\Bundle\UserBundle\OpenRossUserBundle(),
+            new Snc\RedisBundle\SncRedisBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new OpenRoss\Bundle\UserBundle\OpenRossUserBundle(),
             new OpenRoss\Bundle\DashboardBundle\OpenRossDashboardBundle(),
             new OpenRoss\Bundle\PublicBundle\OpenRossPublicBundle(),
-            new Snc\RedisBundle\SncRedisBundle(),
+            new OpenRoss\Bundle\DemoChartsBundle\OpenRossDemoChartsBundle(),
+            new RC\AmChartsBundle\RCAmChartsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
