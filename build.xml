@@ -73,13 +73,15 @@
  </target>
 
  <target name="phploc" description="Measure project size using PHPLOC">
-  <exec executable="phploc">
+  <exec executable="phploc" output="${basedir}/build/logs/phploc.txt">
    <arg value="--log-csv" />
    <arg value="${basedir}/build/logs/phploc.csv" />
    <arg value="--log-xml" />
    <arg value="${basedir}/build/logs/phploc.xml" />
    <arg path="${basedir}/src" />
   </exec>
+  <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/phploc.txt']" />
+  <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/phploc.xml']" />
  </target>
 
  <target name="pdepend"
