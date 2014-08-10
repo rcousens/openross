@@ -17,6 +17,12 @@ class Testing {
   {
   
   }
+  
+  public function $test()
+  {
+    echo->"this is illegal\n";
+  }
+
 }
 
 class DoubleTesting 
