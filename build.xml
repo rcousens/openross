@@ -76,7 +76,7 @@
 
  <target name="pdepend"
          description="Calculate software metrics using PHP_Depend">
-  <exec executable="pdepend">
+  <exec executable="pdepend" output="${basedir}/build/logs/pdepend.txt">
    <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
    <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
    <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
@@ -86,7 +86,7 @@
 
  <target name="phpmd"
          description="Perform project mess detection using PHPMD">
-  <exec executable="phpmd">
+  <exec executable="phpmd" output="${basedir}/build/logs/phpmd.txt">
    <arg path="${basedir}/src" />
    <arg value="text" />
    <arg value="${basedir}/build/phpmd.xml" />
@@ -95,7 +95,7 @@
 
  <target name="phpmd-ci"
          description="Perform project mess detection using PHPMD">
-  <exec executable="phpmd">
+  <exec executable="phpmd" output="${basedir}/build/logs/phpmd-ci.txt">
    <arg path="${basedir}/src" />
    <arg value="xml" />
    <arg value="${basedir}/build/phpmd.xml" />
@@ -106,7 +106,7 @@
 
  <target name="phpcs"
          description="Find coding standard violations using PHP_CodeSniffer">
-  <exec executable="phpcs">
+  <exec executable="phpcs" output="${basedir}/build/logs/phpcs.txt">
    <arg value="--standard=PSR2" />
    <arg value="--extensions=php" />
    <arg path="${basedir}/src" />
@@ -116,7 +116,7 @@
 
  <target name="phpcs-ci"
          description="Find coding standard violations using PHP_CodeSniffer">
-  <exec executable="phpcs" output="/dev/null">
+  <exec executable="phpcs" output="/dev/null" output="${basedir}/build/logs/phcs-ci.txt">
    <arg value="--report=checkstyle" />
    <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
    <arg value="--standard=PSR2" />
@@ -127,7 +127,7 @@
  </target>
 
  <target name="phpcpd" description="Find duplicate code using PHPCPD">
-  <exec executable="phpcpd">
+  <exec executable="phpcpd" output="${basedir}/build/logs/phpcpd.txt">
    <arg value="--log-pmd" />
    <arg value="${basedir}/build/logs/pmd-cpd.xml" />
    <arg path="${basedir}/src" />
@@ -135,7 +135,7 @@
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="${php}" failonerror="true">
+  <exec executable="${php}" failonerror="true" output="${basedir}/build/logs/phpunit.txt">
    <arg value="-c ${basedir}/app" />
    <arg path="${basedir}/src" />
   </exec>
@@ -143,7 +143,7 @@
 
  <target name="phpdoc"
          description="Generate software project documentation using phpDocumentor">
-  <exec executable="phpdoc">
+  <exec executable="phpdoc" output="${basedir}/build/logs/phpdoc.txt">
    <arg value="-d ${basedir}/src" />
    <arg value="-t ${basedir}/build/api" />
   </exec>
