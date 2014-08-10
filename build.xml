@@ -6,6 +6,7 @@
   <!--<delete dir="${basedir}/bin"/>-->
   <!--<delete dir="${basedir}/vendor"/>-->
   <!--<delete file="${basedir}/composer.lock"/>-->
+  <delete dir="${basedir}/build/html"/>
   <delete dir="${basedir}/build/docs"/>
   <delete dir="${basedir}/build/code-browser"/>
   <delete dir="${basedir}/build/coverage"/>
@@ -20,6 +21,7 @@
    depends="prepare,lint,phploc,phpcs-ci,phpmd-ci,phpcpd,phpunit,phpcb,phpdoc,pdepend"/>
 
  <target name="prepare" description="Prepare for build">
+  <mkdir dir="${basedir}/build/html"/>
   <mkdir dir="${basedir}/build/docs"/>
   <mkdir dir="${basedir}/build/code-browser"/>
   <mkdir dir="${basedir}/build/coverage"/>
@@ -112,8 +114,8 @@
    <arg path="${basedir}/src" />
   </exec>
   <echo message="##teamcity[importData type='junit' path='${basedir}/build/logs/junit.xml']" />
-  <zip destfile="${basedir}/build/coverage.zip" basedir="${basedir}/build/coverage"/>
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/coverage.zip']" />
+  <zip destfile="${basedir}/build/html/coverage.zip" basedir="${basedir}/build/coverage"/>
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/html/coverage.zip']" />
   
  </target>
 
@@ -126,8 +128,8 @@
    <arg value="--source" />
    <arg path="${basedir}/src/" />
   </exec>
-  <zip destfile="${basedir}/build/cb.zip" basedir="${basedir}/build/code-browser"/>
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/cb.zip']" />
+  <zip destfile="${basedir}/build/html/cb.zip" basedir="${basedir}/build/code-browser"/>
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/html/cb.zip']" />
  </target>
  
  <target name="phpdoc"
@@ -135,8 +137,8 @@
   <exec executable="phpdoc" output="${basedir}/build/output/phpdoc.txt">
    <arg line="run -d ${basedir}/src -t ${basedir}/build/docs" />
   </exec>
-  <zip destfile="${basedir}/build/docs.zip" basedir="${basedir}/build/docs"/>
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/docs.zip']" />
+  <zip destfile="${basedir}/build/html/docs.zip" basedir="${basedir}/build/docs"/>
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/html/docs.zip']" />
  </target>
 
  <target name="pdepend"
