@@ -148,7 +148,7 @@
   </exec>
   <echo message="##teamcity[importData type='junit' path='${basedir}/build/logs/junit.xml']" />
   <zip destfile="${basedir}/build/coverage.zip" basedir="${basedir}/build/coverage"/>
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/html/coverage.zip']" />
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/coverage.zip']" />
   
  </target>
 
