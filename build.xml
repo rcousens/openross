@@ -65,8 +65,6 @@
 
  <target name="phploc" description="Measure project size using PHPLOC">
   <exec executable="phploc" output="${basedir}/build/output/phploc.txt">
-   <arg value="--log-csv" />
-   <arg value="${basedir}/build/logs/phploc.csv" />
    <arg value="--log-xml" />
    <arg value="${basedir}/build/logs/phploc.xml" />
    <arg path="${basedir}/src" />
@@ -83,7 +81,7 @@
    <arg value="--extensions=php" />
    <arg path="${basedir}/src" />
   </exec>
-  <echo message="##teamcity[importData type='checkstyle' path='${basedir}/build/logs/checkstyle.xml']"/>
+  <!--<echo message="##teamcity[importData type='checkstyle' path='${basedir}/build/logs/checkstyle.xml']"/>-->
  </target>
 
  <target name="phpmd-ci"
@@ -95,7 +93,7 @@
    <arg value="--reportfile" />
    <arg value="${basedir}/build/logs/pmd.xml" />
   </exec>
-  <echo message="##teamcity[importData type='pmd' path='${basedir}/build/logs/pmd.xml']"/>
+  <!--<echo message="##teamcity[importData type='pmd' path='${basedir}/build/logs/pmd.xml']"/>-->
  </target>
 
  <target name="phpcpd" description="Find duplicate code using PHPCPD">
@@ -104,7 +102,7 @@
    <arg value="${basedir}/build/logs/pmd-cpd.xml" />
    <arg path="${basedir}/src" />
   </exec>
-  <echo message="##teamcity[importData type='pmdCpd' path='${basedir}/build/logs/pmd-cpd.xml']"/>
+  <!--<echo message="##teamcity[importData type='pmdCpd' path='${basedir}/build/logs/pmd-cpd.xml']"/>-->
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
@@ -113,7 +111,7 @@
    <arg path="${basedir}/app" />
    <arg path="${basedir}/src" />
   </exec>
-  <echo message="##teamcity[importData type='junit' path='${basedir}/build/logs/junit.xml']" />
+  <!--<echo message="##teamcity[importData type='junit' path='${basedir}/build/logs/junit.xml']" />-->
   <zip destfile="${basedir}/build/html/coverage.zip" basedir="${basedir}/build/coverage"/>
   <echo message="##teamcity[publishArtifacts '${basedir}/build/html/coverage.zip']" />
   
@@ -145,15 +143,15 @@
          description="Calculate software metrics using PHP_Depend">
   <exec executable="pdepend" output="${basedir}/build/output/pdepend.txt">
    <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
-   <arg value="--jdepend-chart=${basedir}/build/logs/dependencies.svg" />
-   <arg value="--overview-pyramid=${basedir}/build/logs/overview-pyramid.svg" />
+   <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
+   <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
    <arg value="--coverage-report=${basedir}/build/logs/phpunit.clover.xml" />
    <arg value="--summary-xml=${basedir}/build/logs/pdepend.summary.xml" />
    <arg path="${basedir}/src" />
   </exec>
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/dependencies.svg']" />
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/pdepend/dependencies.svg']" />
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/jdepend.xml']" />
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/overview-pyramid.svg']" />
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/pdepend/overview-pyramid.svg']" />
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/phpunit.clover.xml']" />  
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/pdepend.summary.xml']" />
  </target>
