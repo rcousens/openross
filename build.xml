@@ -151,8 +151,8 @@
   <exec executable="phpdoc" output="${basedir}/build/output/phpdoc.txt">
    <arg line="run -d ${basedir}/src -t ${basedir}/build/docs" />
   </exec>
-  <zip destfile="${basedir}/build/html/docs.zip" basedir="${basedir}/build/docs"/>
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/html/docs.zip']" />
+  <zip destfile="${basedir}/build/html/javadoc.zip" basedir="${basedir}/build/docs"/>
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/html/javadoc.zip']" />
  </target>
 
 </project>
