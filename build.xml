@@ -4,7 +4,7 @@
 
  <target name="clean" description="Cleanup build artifacts">
   <!--<delete dir="${basedir}/bin"/>-->
-  <delete dir="${basedir}/vendor"/>
+  <!--<delete dir="${basedir}/vendor"/>-->
   <!--<delete file="${basedir}/composer.lock"/>-->
   <delete dir="${basedir}/build/api"/>
   <delete dir="${basedir}/build/code-browser"/>
