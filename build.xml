@@ -81,6 +81,7 @@
    <arg value="--extensions=php" />
    <arg path="${basedir}/src" />
   </exec>
+  <echo message="##teamcity[importData type='checkstyle' path='${basedir}/build/logs/checkstyle.xml']"/>
  </target>
 
  <target name="phpmd-ci"
