@@ -122,8 +122,6 @@
    <arg value="${basedir}/build/teamcity-clover.php" />
    <arg value="${basedir}/build/logs/clover.xml" />
   </exec>
-  <move file="${basedir}/build/teamcity-info.xml" todir="${basedir}" />
-  <!--<echo message="##teamcity[importData type='pmd' path='${basedir}/build/logs/pmd.xml']"/>-->
  </target>
 
  <target name="pdepend"
