@@ -53,7 +53,7 @@
  </target>
 
  <target name="lint">
-  <apply executable="${php}" failonerror="true" append="true" output="${basedir}/build/output/lint.txt">
+  <apply executable="${php}" append="true" output="${basedir}/build/output/lint.txt">
    <arg value="-l" />
 
    <fileset dir="${basedir}/src">
@@ -106,7 +106,7 @@
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="phpunit" failonerror="true" output="${basedir}/build/output/phpunit.txt">
+  <exec executable="phpunit" output="${basedir}/build/output/phpunit.txt">
    <arg value="-c" />
    <arg path="${basedir}/app" />
    <arg path="${basedir}/src" />
