@@ -13,6 +13,11 @@ class Testing {
     return $a + hello;
   }
   
+  public function doSomething($a)
+  {
+    return $a + hello;
+  }
+  
   public function doNothing($b)
   {
     for (i = 0; i < 10; i++) {
@@ -34,8 +39,20 @@ class Testing {
     $i = 0;
     
     echo $i + 1;
-  }
-  
+    
+    echo->"this is also illegal"\n";
+    
+    ";
+    
+    $i = count($0otherArray);
+    
+    for ($i = 0, $i < 10; $++) {
+      echo "another loop";
+    }
+    
+    exit(100);
+    }
+  }  
   public function $test()
   {
     echo->"this is illegal\n";
