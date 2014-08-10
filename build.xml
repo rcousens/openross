@@ -92,7 +92,7 @@
    <arg value="--reportfile" />
    <arg value="${basedir}/build/logs/pmd.xml" />
   </exec>
-  <echo message="##teamcity[importData type='pmd' path='${basedir}/build/logs/phpmd.xml']"/>
+  <echo message="##teamcity[importData type='pmd' path='${basedir}/build/logs/pmd.xml']"/>
  </target>
 
  <target name="phpcpd" description="Find duplicate code using PHPCPD">
