@@ -1,14 +1,14 @@
 <?xml version="1.0"  encoding="UTF-8" ?>
 
-<project name="testsite" basedir="." default="main">
+<project name="openross" basedir=".." default="main">
     <property file="./build.properties" />
 
     <property name="package"  value="${phing.project.name}" override="true" />
-    <property name="builddir" value="./build/testsite" override="true" />
-    <property name="srcdir"   value="${project.basedir}" override="true" />
+    <property name="builddir" value="./build/openross" override="true" />
+    <property name="srcdir"   value="${project.basedir}/src" override="true" />
 
     <!-- Fileset for all files -->
-    <fileset dir="." id="allfiles">
+    <fileset dir="${srcdir}" id="allfiles">
         <include name="**" />
     </fileset>
 
