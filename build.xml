@@ -55,10 +55,6 @@
    <fileset dir="${basedir}/src">
     <include name="**/*.php" />
    </fileset>
-
-   <fileset dir="${basedir}/tests">
-    <include name="**/*.php" />
-   </fileset>
   </apply>
   <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/lint.txt']" />
  </target>
