@@ -135,7 +135,7 @@
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="${php}" failonerror="true" output="${basedir}/build/logs/phpunit.txt">
+  <exec executable="phpunit" failonerror="true" output="${basedir}/build/logs/phpunit.txt">
    <arg value="-c ${basedir}/app" />
    <arg path="${basedir}/src" />
   </exec>
