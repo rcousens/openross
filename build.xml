@@ -18,7 +18,7 @@
  <target name="install" depends="download-composer,composer" />
  
  <target name="build"
-   depends="prepare,lint,phploc,phpcs-ci,phpmd-ci,phpcpd,phpunit,phpcb,phpdoc,pdepend"/>
+   depends="prepare,lint,phploc,phpcs-ci,phpmd-ci,phpcpd,phpunit,pdepend,phpcb,phpdoc"/>
 
  <target name="prepare" description="Prepare for build">
   <mkdir dir="${basedir}/build/html"/>
@@ -114,7 +114,23 @@
   <!--<echo message="##teamcity[importData type='junit' path='${basedir}/build/logs/junit.xml']" />-->
   <zip destfile="${basedir}/build/html/coverage.zip" basedir="${basedir}/build/coverage"/>
   <echo message="##teamcity[publishArtifacts '${basedir}/build/html/coverage.zip']" />
-  
+ </target>
+
+ <target name="pdepend"
+         description="Calculate software metrics using PHP_Depend">
+  <exec executable="pdepend" output="${basedir}/build/output/pdepend.txt">
+   <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
+   <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
+   <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+   <arg value="--coverage-report=${basedir}/build/logs/clover.xml" />
+   <arg value="--summary-xml=${basedir}/build/logs/pdepend.summary.xml" />
+   <arg path="${basedir}/src" />
+  </exec>
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/pdepend/dependencies.svg']" />
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/jdepend.xml']" />
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/pdepend/overview-pyramid.svg']" />
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/clover.xml']" />  
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/pdepend.summary.xml']" />
  </target>
 
  <target name="phpcb" description="PHP Code Browser">
@@ -139,20 +155,4 @@
   <echo message="##teamcity[publishArtifacts '${basedir}/build/html/docs.zip']" />
  </target>
 
- <target name="pdepend"
-         description="Calculate software metrics using PHP_Depend">
-  <exec executable="pdepend" output="${basedir}/build/output/pdepend.txt">
-   <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
-   <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
-   <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
-   <arg value="--coverage-report=${basedir}/build/logs/clover.xml" />
-   <arg value="--summary-xml=${basedir}/build/logs/pdepend.summary.xml" />
-   <arg path="${basedir}/src" />
-  </exec>
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/pdepend/dependencies.svg']" />
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/jdepend.xml']" />
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/pdepend/overview-pyramid.svg']" />
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/clover.xml']" />  
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/pdepend.summary.xml']" />
- </target>
 </project>
