@@ -10,19 +10,21 @@
   <delete dir="${basedir}/build/code-browser"/>
   <delete dir="${basedir}/build/coverage"/>
   <delete dir="${basedir}/build/logs"/>
+  <delete dir="${basedir}/build/output"/>
   <delete dir="${basedir}/build/pdepend"/>
  </target>
 
  <target name="install" depends="download-composer,composer" />
  
  <target name="build"
-   depends="prepare,lint,phploc,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb,phpdoc,pdepend"/>
+   depends="prepare,lint,phploc,phpcs-ci,phpmd-ci,phpcpd,phpunit,phpcb,phpdoc,pdepend"/>
 
  <target name="prepare" description="Prepare for build">
   <mkdir dir="${basedir}/build/docs"/>
   <mkdir dir="${basedir}/build/code-browser"/>
   <mkdir dir="${basedir}/build/coverage"/>
   <mkdir dir="${basedir}/build/logs"/>
+  <mkdir dir="${basedir}/build/output"/>
   <mkdir dir="${basedir}/build/pdepend"/>
  </target>
 
@@ -49,60 +51,30 @@
  </target>
 
  <target name="lint">
-  <apply executable="${php}" failonerror="true" append="true" output="${basedir}/build/logs/lint.txt">
+  <apply executable="${php}" failonerror="true" append="true" output="${basedir}/build/output/lint.txt">
    <arg value="-l" />
 
    <fileset dir="${basedir}/src">
     <include name="**/*.php" />
    </fileset>
   </apply>
-  <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/lint.txt']" />
+  <echo message="###teamcity[publishArtifacts '${basedir}/build/output/lint.txt']" />
  </target>
 
  <target name="phploc" description="Measure project size using PHPLOC">
-  <exec executable="phploc" output="${basedir}/build/logs/phploc.txt">
+  <exec executable="phploc" output="${basedir}/build/output/phploc.txt">
    <arg value="--log-csv" />
    <arg value="${basedir}/build/logs/phploc.csv" />
    <arg value="--log-xml" />
    <arg value="${basedir}/build/logs/phploc.xml" />
    <arg path="${basedir}/src" />
   </exec>
-  <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/phploc.txt']" />
- </target>
-
- <target name="phpmd"
-         description="Perform project mess detection using PHPMD">
-  <exec executable="phpmd" output="${basedir}/build/logs/phpmd.txt">
-   <arg path="${basedir}/src" />
-   <arg value="text" />
-   <arg value="${basedir}/build/phpmd.xml" />
-  </exec>
- </target>
-
- <target name="phpmd-ci"
-         description="Perform project mess detection using PHPMD">
-  <exec executable="phpmd" output="${basedir}/build/logs/phpmd-ci.txt">
-   <arg path="${basedir}/src" />
-   <arg value="xml" />
-   <arg value="${basedir}/build/phpmd.xml" />
-   <arg value="--reportfile" />
-   <arg value="${basedir}/build/logs/pmd.xml" />
-  </exec>
- </target>
-
- <target name="phpcs"
-         description="Find coding standard violations using PHP_CodeSniffer">
-  <exec executable="phpcs" output="${basedir}/build/logs/phpcs.txt">
-   <arg value="--standard=PSR2" />
-   <arg value="--extensions=php" />
-   <arg path="${basedir}/src" />
-   <arg path="${basedir}/tests" />
-  </exec>
+  <echo message="###teamcity[publishArtifacts '${basedir}/build/output/phploc.txt']" />
  </target>
 
  <target name="phpcs-ci"
          description="Find coding standard violations using PHP_CodeSniffer">
-  <exec executable="phpcs" output="${basedir}/build/logs/phpcs-ci.txt">
+  <exec executable="phpcs" output="${basedir}/build/output/phpcs-ci.txt">
    <arg value="--report=checkstyle" />
    <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
    <arg value="--standard=PSR2" />
@@ -111,16 +83,29 @@
   </exec>
  </target>
 
+ <target name="phpmd-ci"
+         description="Perform project mess detection using PHPMD">
+  <exec executable="phpmd" output="${basedir}/build/output/phpmd-ci.txt">
+   <arg path="${basedir}/src" />
+   <arg value="xml" />
+   <arg value="${basedir}/build/phpmd.xml" />
+   <arg value="--reportfile" />
+   <arg value="${basedir}/build/logs/pmd.xml" />
+  </exec>
+  <echo message="##teamcity[importData type='pmd' path='${basedir}/build/logs/phpmd.xml']"/>
+ </target>
+
  <target name="phpcpd" description="Find duplicate code using PHPCPD">
-  <exec executable="phpcpd" output="${basedir}/build/logs/phpcpd.txt">
+  <exec executable="phpcpd" output="${basedir}/build/output/phpcpd.txt">
    <arg value="--log-pmd" />
    <arg value="${basedir}/build/logs/pmd-cpd.xml" />
    <arg path="${basedir}/src" />
   </exec>
+  <echo message="##teamcity[importData type='pmdCpd' path='${basedir}/build/logs/pmd-cpd.xml']"/>
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="phpunit" failonerror="true" output="${basedir}/build/logs/phpunit.txt">
+  <exec executable="phpunit" failonerror="true" output="${basedir}/build/output/phpunit.txt">
    <arg value="-c" />
    <arg path="${basedir}/app" />
    <arg path="${basedir}/src" />
@@ -132,7 +117,7 @@
  </target>
 
  <target name="phpcb" description="PHP Code Browser">
-  <exec executable="phpcb" output="${basedir}/build/logs/phpcb.txt">
+  <exec executable="phpcb" output="${basedir}/build/output/phpcb.txt">
    <arg value="--log" />
    <arg path="${basedir}/build/logs" />
    <arg value="--output" />
@@ -146,7 +131,7 @@
  
  <target name="phpdoc"
          description="Generate software project documentation using phpDocumentor">
-  <exec executable="phpdoc" output="${basedir}/build/logs/phpdoc.txt">
+  <exec executable="phpdoc" output="${basedir}/build/output/phpdoc.txt">
    <arg line="run -d ${basedir}/src -t ${basedir}/build/docs" />
   </exec>
   <zip destfile="${basedir}/build/docs.zip" basedir="${basedir}/build/docs"/>
@@ -155,20 +140,18 @@
 
  <target name="pdepend"
          description="Calculate software metrics using PHP_Depend">
-  <exec executable="pdepend" output="${basedir}/build/logs/pdepend.txt">
+  <exec executable="pdepend" output="${basedir}/build/output/pdepend.txt">
    <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
    <arg value="--jdepend-chart=${basedir}/build/logs/dependencies.svg" />
    <arg value="--overview-pyramid=${basedir}/build/logs/overview-pyramid.svg" />
-   <arg value="--phpunit-xml=${basedir}/build/logs/pdepend.phpunit.xml" />
-   <arg value="--summary-xml=${basedir}/build/logs/phpunit.summary.xml" />
    <arg value="--coverage-report=${basedir}/build/logs/phpunit.clover.xml" />
+   <arg value="--summary-xml=${basedir}/build/logs/pdepend.summary.xml" />
    <arg path="${basedir}/src" />
   </exec>
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/dependencies.svg']" />
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/jdepend.xml']" />
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/overview-pyramid.svg']" />
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/pdepend.phpunit.xml']" />
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/pdepend.summary.xml']" />
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/phpunit.clover.xml']" />  
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/pdepend.summary.xml']" />
  </target>
 </project>
