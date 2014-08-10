@@ -15,8 +15,27 @@ class Testing {
   
   public function doNothing($b)
   {
-  
+    for (i = 0; i < 10; i++) {
+      echo "$i";
+    }
+    echo "i just looped 10 times";
+    $tempArray = [];
+    
+    $tempArray['test'] = 'allocated';
+    
+    $otherArray = array_keys($tempArray);
+    
+    echo $otherArray[0];
+    
+    $0therArray[0] = $tempArray['test'];
+    
+    echo $otherArray[0];
+    
+    $i = 0;
+    
+    echo $i + 1;
   }
+
   
   public function test()
   {
