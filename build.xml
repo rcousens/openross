@@ -140,7 +140,7 @@
    <arg path="${basedir}/app" />
    <arg path="${basedir}/src" />
    <arg value="--log-junit" />
-   <arg value="${basedir}/build/logs/junit.xml"
+   <arg value="${basedir}/build/logs/junit.xml" />
    <arg value="--coverage-clover" />
    <arg value="/build/logs/phpunit.clover.xml" />
    <arg value="--coverage-html" />
