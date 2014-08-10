@@ -70,7 +70,6 @@
    <arg path="${basedir}/src" />
   </exec>
   <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/phploc.txt']" />
-  <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/phploc.xml']" />
  </target>
 
  <target name="pdepend"
