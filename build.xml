@@ -142,8 +142,11 @@
   </exec>
  </target>
 
- <target name="phpdox"
-         description="Generate software project documentation using phpDox">
-  <exec executable="phpdox" />
+ <target name="phpdoc"
+         description="Generate software project documentation using phpDocumentor">
+  <exec executable="phpdoc">
+   <arg value="-d ${basedir}/src" />
+   <arg value="-t ${basedir}/build/api" />
+   
  </target>
 </project>
