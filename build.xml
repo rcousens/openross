@@ -3,7 +3,7 @@
  <property name="php" value="php"/>
 
  <target name="build"
-   depends="clean,prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpdoc"/>
+   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpdoc"/>
 
  <target name="clean" description="Cleanup build artifacts">
   <!--<delete dir="${basedir}/bin"/>-->
