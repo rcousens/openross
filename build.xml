@@ -16,7 +16,7 @@
  <target name="install" depends="download-composer,composer" />
  
  <target name="build"
-   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpdoc"/>
+   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb,phpdoc"/>
 
  <target name="prepare" description="Prepare for build">
   <mkdir dir="${basedir}/build/docs"/>
@@ -142,7 +142,7 @@
  </target>
 
  <target name="phpcb" description="PHP Code Browser">
-  <exec executable="phpcb" output="${basedir/build/logs/phpcb.txt">
+  <exec executable="phpcb" output="${basedir}/build/logs/phpcb.txt">
    <arg value="--log" />
    <arg value="${basedir}/build/logs/phpcb-log.txt" />
    <arg value="--output" />
