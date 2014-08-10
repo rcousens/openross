@@ -144,11 +144,11 @@
  <target name="phpcb" description="PHP Code Browser">
   <exec executable="phpcb" output="${basedir}/build/logs/phpcb.txt">
    <arg value="--log" />
-   <arg value="${basedir}/build/logs/phpcb-log.txt" />
+   <arg path="${basedir}/build/logs" />
    <arg value="--output" />
-   <arg value="${basedir}/build/code-browser/" />
+   <arg path="${basedir}/build/code-browser/" />
    <arg value="--source" />
-   <arg value="${basedir}/src" />
+   <arg path="${basedir}/src/" />
   </exec>
   <zip destfile="${basedir}/build/cb.zip" basedir="${basedir}/build/code-browser"/>
   <echo message="##teamcity[publishArtifacts '${basedir}/build/cb.zip']" />
