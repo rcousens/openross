@@ -141,6 +141,19 @@
   
  </target>
 
+ <target name="phpcb" description="PHP Code Browser">
+  <exec executable="phpcb" output="${basedir/build/logs/phpcb.txt">
+   <arg value="--log" />
+   <arg value="${basedir}/build/logs/phpcb-log.txt" />
+   <arg value="--output" />
+   <arg value="${basedir}/build/code-browser/" />
+   <arg value="--source" />
+   <arg value="${basedir}/src" />
+  </exec>
+  <zip destfile="${basedir}/build/cb.zip" basedir="${basedir}/build/code-browser"/>
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/cb.zip']" />
+ </target>
+ 
  <target name="phpdoc"
          description="Generate software project documentation using phpDocumentor">
   <exec executable="phpdoc" output="${basedir}/build/logs/phpdoc.txt">
