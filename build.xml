@@ -50,7 +50,7 @@
  </target>
 
  <target name="lint">
-  <apply executable="${php}" failonerror="true" output="${basedir}/build/logs/lint.txt">
+  <apply executable="${php}" failonerror="true" append="true" output="${basedir}/build/logs/lint.txt">
    <arg value="-l" />
 
    <fileset dir="${basedir}/src">
