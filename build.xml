@@ -2,9 +2,6 @@
 <project name="OpenRoss" default="build">
  <property name="php" value="php"/>
 
- <target name="build"
-   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpdoc"/>
-
  <target name="clean" description="Cleanup build artifacts">
   <!--<delete dir="${basedir}/bin"/>-->
   <delete dir="${basedir}/vendor"/>
@@ -15,6 +12,11 @@
   <delete dir="${basedir}/build/logs"/>
   <delete dir="${basedir}/build/pdepend"/>
  </target>
+
+ <target name="install" depends="download-composer,composer" />
+ 
+ <target name="build"
+   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpdoc"/>
 
  <target name="prepare" description="Prepare for build">
   <mkdir dir="${basedir}/build/api"/>
