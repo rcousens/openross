@@ -131,14 +131,14 @@
    <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
    <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
    <arg value="--coverage-report=${basedir}/build/logs/clover.xml" />
-   <arg value="--summary-xml=${basedir}/build/logs/pdepend.summary.xml" />
+   <arg value="--summary-xml=${basedir}/build/logs/summary.xml" />
    <arg path="${basedir}/src" />
   </exec>
   <echo message="##teamcity[publishArtifacts '${basedir}/build/pdepend/dependencies.svg']" />
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/jdepend.xml']" />
   <echo message="##teamcity[publishArtifacts '${basedir}/build/pdepend/overview-pyramid.svg']" />
   <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/clover.xml']" />  
-  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/pdepend.summary.xml']" />
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/logs/summary.xml']" />
  </target>
 
  <target name="phpcb" description="PHP Code Browser">
