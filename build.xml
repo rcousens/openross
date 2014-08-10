@@ -135,14 +135,16 @@
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
-  <property name="junit" value="${basedir}/build/logs/junit.xml"
   <exec executable="phpunit" failonerror="true" output="${basedir}/build/logs/phpunit.txt">
    <arg value="-c" />
    <arg path="${basedir}/app" />
    <arg path="${basedir}/src" />
-   <arg value="--log-junit ${junit}" />
-   <arg value="--coverage-clover /build/logs/phpunit.clover.xml" />
-   <arg value="--coverage-html /build/coverage" />
+   <arg value="--log-junit" />
+   <arg value="${basedir}/build/logs/junit.xml"
+   <arg value="--coverage-clover" />
+   <arg value="/build/logs/phpunit.clover.xml" />
+   <arg value="--coverage-html" />
+   <arg value="/build/coverage" />
   </exec>
  </target>
 
