@@ -16,13 +16,6 @@
   <delete dir="${basedir}/build/pdepend"/>
   <delete dir="${basedir}/build/phar"/>
   <delete dir="${basedir}/build/phpdox"/>
-
-  <delete>
-   <fileset dir="${basedir}/build">
-    <include name="**/*.phar" />
-    <include name="**/*.phar.asc" />
-   </fileset>
-  </delete>
  </target>
 
  <target name="prepare" description="Prepare for build">
@@ -62,12 +55,10 @@
 
    <fileset dir="${basedir}/src">
     <include name="**/*.php" />
-    <modified />
    </fileset>
 
    <fileset dir="${basedir}/tests">
     <include name="**/*.php" />
-    <modified />
    </fileset>
   </apply>
   <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/lint.txt']" />
