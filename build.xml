@@ -57,7 +57,7 @@
  </target>
 
  <target name="lint">
-  <apply executable="${php}" failonerror="true">
+  <apply executable="${php}" failonerror="true" output="${basedir}/build/logs/lint.txt">
    <arg value="-l" />
 
    <fileset dir="${basedir}/src">
@@ -70,6 +70,7 @@
     <modified />
    </fileset>
   </apply>
+  <echo message="###teamcity[publishArtifacts '${basedir}/build/logs/lint.txt']" />
  </target>
 
  <target name="phploc" description="Measure project size using PHPLOC">
