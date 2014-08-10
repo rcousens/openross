@@ -6,7 +6,7 @@
   <!--<delete dir="${basedir}/bin"/>-->
   <!--<delete dir="${basedir}/vendor"/>-->
   <!--<delete file="${basedir}/composer.lock"/>-->
-  <delete dir="${basedir}/build/api"/>
+  <delete dir="${basedir}/build/docs"/>
   <delete dir="${basedir}/build/code-browser"/>
   <delete dir="${basedir}/build/coverage"/>
   <delete dir="${basedir}/build/logs"/>
@@ -19,7 +19,7 @@
    depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpdoc"/>
 
  <target name="prepare" description="Prepare for build">
-  <mkdir dir="${basedir}/build/api"/>
+  <mkdir dir="${basedir}/build/docs"/>
   <mkdir dir="${basedir}/build/code-browser"/>
   <mkdir dir="${basedir}/build/coverage"/>
   <mkdir dir="${basedir}/build/logs"/>
@@ -135,12 +135,6 @@
    <arg value="-c" />
    <arg path="${basedir}/app" />
    <arg path="${basedir}/src" />
-   <arg value="--log-junit" />
-   <arg value="${basedir}/build/logs/junit.xml" />
-   <arg value="--coverage-clover" />
-   <arg value="/build/logs/phpunit.clover.xml" />
-   <arg value="--coverage-html" />
-   <arg value="/build/coverage" />
   </exec>
   <echo message="##teamcity[importData type='junit' path='${basedir}/build/logs/junit.xml']" />
   <zip destfile="${basedir}/build/coverage.zip" basedir="${basedir}/build/coverage"/>
@@ -151,8 +145,11 @@
  <target name="phpdoc"
          description="Generate software project documentation using phpDocumentor">
   <exec executable="phpdoc" output="${basedir}/build/logs/phpdoc.txt">
+   <arg value="run" />
    <arg value="-d ${basedir}/src" />
-   <arg value="-t ${basedir}/build/api" />
+   <arg value="-t ${basedir}/build/docs" />
   </exec>
+  <zip destfile="${basedir}/build/docs.zip" basedir="${basedir}/build/docs"/>
+  <echo message="##teamcity[publishArtifacts '${basedir}/build/docs.zip']" />
  </target>
 </project>
