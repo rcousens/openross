@@ -145,9 +145,7 @@
  <target name="phpdoc"
          description="Generate software project documentation using phpDocumentor">
   <exec executable="phpdoc" output="${basedir}/build/logs/phpdoc.txt">
-   <arg value="run" />
-   <arg value="-d ${basedir}/src" />
-   <arg value="-t ${basedir}/build/docs" />
+   <arg line="run -d ${basedir}/src -t ${basedir}/build/docs" />
   </exec>
   <zip destfile="${basedir}/build/docs.zip" basedir="${basedir}/build/docs"/>
   <echo message="##teamcity[publishArtifacts '${basedir}/build/docs.zip']" />
