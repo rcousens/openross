@@ -18,7 +18,7 @@
  <target name="install" depends="download-composer,composer" />
  
  <target name="build"
-   depends="prepare,lint,phploc,phpcs-ci,phpmd-ci,phpcpd,phpunit,pdepend,phpcb,phpdoc"/>
+   depends="prepare,lint,phploc,phpcs-ci,phpmd-ci,phpcpd,phpunit,teamcity-clover,pdepend,phpcb,phpdoc"/>
 
  <target name="prepare" description="Prepare for build">
   <mkdir dir="${basedir}/build/html"/>
@@ -114,6 +114,15 @@
   <!--<echo message="##teamcity[importData type='junit' path='${basedir}/build/logs/junit.xml']" />-->
   <zip destfile="${basedir}/build/html/coverage.zip" basedir="${basedir}/build/coverage"/>
   <echo message="##teamcity[publishArtifacts '${basedir}/build/html/coverage.zip']" />
+ </target>
+
+ <target name="teamcity-clover"
+         description="Convert clover to teamcity format">
+  <exec executable="php" output="${basedir}/build/output/teamcity-clover.txt">
+   <arg value="${basedir}/build/teamcity-clover.php" />
+   <arg value="${basedir}/build/clover.xml" />
+  </exec>
+  <!--<echo message="##teamcity[importData type='pmd' path='${basedir}/build/logs/pmd.xml']"/>-->
  </target>
 
  <target name="pdepend"
