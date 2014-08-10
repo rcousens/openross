@@ -147,5 +147,6 @@
   <exec executable="phpdoc">
    <arg value="-d ${basedir}/src" />
    <arg value="-t ${basedir}/build/api" />
+  </exec>
  </target>
 </project>
