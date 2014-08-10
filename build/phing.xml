@@ -4,8 +4,8 @@
     <property file="./build.properties" />
 
     <property name="package"  value="${phing.project.name}" override="true" />
-    <property name="builddir" value="./build/openross" override="true" />
-    <property name="srcdir"   value="${project.basedir}/src" override="true" />
+    <property name="builddir" value="${teamcity.build.checkoutDir}/build/openross" override="true" />
+    <property name="srcdir"   value="${teamcity.build.checkoutDir}/src" override="true" />
 
     <!-- Fileset for all files -->
     <fileset dir="${srcdir}" id="allfiles">
